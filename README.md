@@ -621,6 +621,80 @@ Date:   Tue Aug 26 19:48:51 2008 +0800
 
 $ git config --global alias.visual '!gitk'
 
+###  Git 分支简介
+
+[git分支原理简介](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%AE%80%E4%BB%8B)
+
+#### 分支创建
+Git 是怎么创建新分支的呢？ 很简单，它只是为你创建了一个可以移动的新的指针。 比如，创建一个 testing 分支， 你需要使用 git branch 命令：
+
+$ git branch testing  
+这会在当前所在的提交对象上创建一个指针。
+
+#### 两个指向相同提交历史的分支
+那么，Git 又是怎么知道当前在哪一个分支上呢？ 也很简单，它有一个名为 HEAD 的特殊指针。 请注意它和许多其它版本控制系统（如 Subversion 或 CVS）里的 HEAD 概念完全不同。 在 Git 中，它是一个`指针`，指向当前所在的本地分支（译注：将 HEAD 想象为当前分支的别名）。
+
+你可以简单地使用 git log 命令查看各个分支当前所指的对象。 提供这一功能的参数是 `**--decorate**`。
+
+
+#### 分支切换
+要切换到一个已存在的分支，你需要使用 git checkout 命令。 我们现在切换到新创建的 testing 分支去：
+
+$ git checkout testing  
+这样 HEAD 就指向 testing 分支了。
+
+
+创建新分支的同时切换过去
+
+通常我们会在创建一个新分支后立即切换过去，这可以用 `git checkout -b <newbranchname> `一条命令搞定。
+
+### 分支的新建与合并
+
+![image](https://github.com/huaer1234/learn-git-github/assets/96096516/4e6c3d95-0ec1-4af0-8269-1a2e0ec52114)
+
+
+
+[git 分支合并与冲突](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)
+
+`git branch `命令不只是可以创建与删除分支。 如果不加任何参数运行它，会得到当前所有分支的一个列表：
+
+注意 master 分支前的 * 字符：它代表现在检出的那一个分支（也就是说，当前 HEAD 指针所指向的分支）。 这意味着如果在这时候提交，master 分支将会随着新的工作向前移动。
+
+`git branch -v`  如果需要查看每一个分支的最后一次提交
+
+--merged与 --no-merged 这两个有用的选项可以过滤这个列表中已经合并或尚未合并到当前分支的分支。
+
+`git branch--merged`如果要查看哪些分支已经合并到当前分支
+
+`git branch --no-merged`查看所有包含未合并工作的分支
+
+ `git branch -d `在git branch列表中分支名字前没有 * 号的分支通常可以删除掉 -D选项强制删除
+
+
+### Git 分支 -分支开发工作流
+
+[开发工作流](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81)
+
+
+### 远程分支
+远程引用是对远程仓库的引用（指针），包括分支、标签等等。 你可以通过 git ls-remote <remote> 来显式地获得远程引用的完整列表， 或者通过 git remote show <remote> 获得远程分支的更多信息。 然而，一个更常见的做法是利用远程跟踪分支。
+
+远程跟踪分支是远程分支状态的引用。它们是你无法移动的本地引用。一旦你进行了网络通信， Git 就会为你移动它们以精确反映远程仓库的状态。请将它们看做书签， 这样可以提醒你该分支在远程仓库中的位置就是你最后一次连接到它们的位置。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
