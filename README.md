@@ -1,6 +1,5 @@
 # learn-git/github
 环境：`ubuntu 22.04`
-@[TOC](目录)
 
 ## 获取 git 仓库
 通常有两种获取 Git 项目仓库的方式：
